@@ -9,9 +9,9 @@ pipeline {
             steps {
                 script {
 
-                    sh 'sudo apt-get update'
-                    sh 'sudo apt-get install -y docker.io'
-                    sh 'sudo service docker start'
+                    sh 'apt-get update'
+                    sh 'apt-get install -y docker.io'
+                    sh 'service docker start'
                     sh 'docker info'
                 }
             }
@@ -31,8 +31,8 @@ pipeline {
             steps {
                 script {
 
-                    sh 'sudo apt-get update'
-                    sh 'sudo apt-get install -y python3 python3-venv python3-pip'
+                    sh 'apt-get update'
+                    sh 'apt-get install -y python3 python3-venv python3-pip'
                     
      
                     sh 'python3 -m venv /venv'
@@ -45,7 +45,7 @@ pipeline {
 
                     sleep 15
                     
-                    // Run the tests
+
                     sh 'python test_devopstest.py'
                 }
             }
