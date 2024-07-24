@@ -11,6 +11,7 @@ pipeline {
 
                     sh 'apt-get update'
                     sh 'apt-get install -y docker.io'
+                    sh 'apt-get install -y docker-compose-plugin'
                     sh 'service docker start'
                     sh 'docker -v'
                 }
@@ -21,6 +22,7 @@ pipeline {
                 script {
                     sh 'apt-get update'
                     sh 'apt-get install -y docker.io'
+                    sh 'apt-get install -y docker-compose-plugin'
                     sh 'service docker start'
                     sh 'docker compose up -d'
                     
