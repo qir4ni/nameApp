@@ -12,7 +12,7 @@ pipeline {
                     sh 'apt-get update'
                     sh 'apt-get install -y docker.io'
                     sh 'service docker start'
-                    sh 'docker info'
+                    sh 'docker -v'
                 }
             }
         }
@@ -22,8 +22,6 @@ pipeline {
 
                     sh 'docker compose up -d'
                     
-
-                    archiveArtifacts artifacts: 'docker-compose.yml'
                 }
             }
         }
