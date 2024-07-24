@@ -19,7 +19,9 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-
+                    sh 'apt-get update'
+                    sh 'apt-get install -y docker.io'
+                    sh 'service docker start'
                     sh 'docker compose up -d'
                     
                 }
@@ -30,8 +32,10 @@ pipeline {
                 script {
 
                     sh 'apt-get update'
+                    sh 'apt-get upgrade -y'
                     sh 'apt-get install -y python3 python3-venv python3-pip'
-                    
+                    sh 'apt-get install -y docker.io'
+                    sh 'service docker start'
      
                     sh 'python3 -m venv /venv'
                     sh 'source /venv/bin/activate'
