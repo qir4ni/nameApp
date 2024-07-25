@@ -11,6 +11,7 @@ pipeline {
                 script {
                     sh 'apt-get update'
                     sh 'apt-get upgrade -y'
+                    sh 'apt-get install docker-compose-plugin -y'
                     sh 'docker-compose up -d'
                     
                 }
@@ -22,6 +23,7 @@ pipeline {
 
                     sh 'apt-get update'
                     sh 'apt-get upgrade -y'
+                    sh 'apt-get install docker-compose-plugin -y'
                     sh 'apt-get install -y python3 python3-venv python3-pip'
                     sh 'service docker start'
      
