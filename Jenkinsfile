@@ -31,14 +31,14 @@ pipeline {
                     sh '''
                         curl -L https://github.com/docker/compose/releases/download/v2.29.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
                         curl -fsSL https://get.docker.com/ | sh
-                        whoami
+                        sudo usermod -aG docker root
                         '''
                     sh '''
                         chmod +x /usr/local/bin/docker-compose
                         docker-compose version
                         '''
                     sh 'apt-get install -y python3 python3-venv python3-pip'
-                    sh 'service docker start'
+                    sh 'sudo service docker start'
      
                     sh 'python3 -m venv /venv'
                     sh 'source /venv/bin/activate'
