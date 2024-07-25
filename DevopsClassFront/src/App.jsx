@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
-
+import { initializeApp } from "firebase/app";
 function App() {
+
   const [name, setName] = useState('');
   const [savedNames, setSavedNames] = useState([]);
 
@@ -72,6 +73,7 @@ function App() {
           </tbody>
         </table>
       </div>
+
     </div>
   );
 }
