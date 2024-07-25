@@ -11,7 +11,7 @@ pipeline {
                 script {
                     sh 'apt-get update'
                     sh 'apt-get upgrade -y'
-                    sh 'docker compose up -d'
+                    sh 'docker-compose up -d'
                     
                 }
             }
@@ -30,7 +30,7 @@ pipeline {
                     sh 'pip install pytest selenium'
                     
 
-                    sh 'docker compose up -d'
+                    sh 'docker-compose up -d'
                     
 
                     sleep 15
