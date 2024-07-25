@@ -1,5 +1,5 @@
 pipeline {
-    agent {docker-compose.yaml true}
+    agent any
     environment {
         DOCKER_HOST = 'tcp://localhost:2375/'
         DOCKER_DRIVER = 'overlay2'
