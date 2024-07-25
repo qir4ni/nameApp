@@ -17,7 +17,6 @@ pipeline {
                         curl -SL https://github.com/docker/compose/releases/download/v2.29.1/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
                         '''
                     sh '''
-                        chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
                         docker compose version
                         '''
                     
@@ -36,7 +35,6 @@ pipeline {
                         curl -SL https://github.com/docker/compose/releases/download/v2.29.1/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
                         '''
                     sh '''
-                        chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
                         docker compose version
                         '''
                     sh 'apt-get install -y python3 python3-venv python3-pip'
