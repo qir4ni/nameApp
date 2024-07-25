@@ -12,14 +12,10 @@ pipeline {
                     sh 'apt-get update'
                     sh 'apt-get upgrade -y'
                     sh '''
-                        DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
-                        mkdir -p $DOCKER_CONFIG/cli-plugins
-                        curl -SL https://github.com/docker/compose/releases/download/v2.29.1/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+                        curl -L https://github.com/docker/compose/releases/download/v2.29.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+                        chmod +x /usr/local/bin/docker-compose
                         '''
                     sh '''
-                        ls
-                        pwd
-                        chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
                         docker compose version
                         '''
                     
