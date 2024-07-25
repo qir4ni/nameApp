@@ -16,9 +16,7 @@ pipeline {
                         chmod +x /usr/local/bin/docker-compose
                         '''
                     sh '''
-                        which docker-compose
                         docker-compose version
-                        docker compose version
                         '''
                     
                 }
@@ -31,13 +29,11 @@ pipeline {
                     sh 'apt-get update'
                     sh 'apt-get upgrade -y'
                     sh '''
-                        DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
-                        mkdir -p $DOCKER_CONFIG/cli-plugins
-                        curl -SL https://github.com/docker/compose/releases/download/v2.29.1/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+                        curl -L https://github.com/docker/compose/releases/download/v2.29.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
                         '''
                     sh '''
-                        chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
-                        docker compose version
+                        chmod +x /usr/local/bin/docker-compose
+                        docker-compose version
                         '''
                     sh 'apt-get install -y python3 python3-venv python3-pip'
                     sh 'service docker start'
