@@ -17,6 +17,8 @@ pipeline {
                         curl -SL https://github.com/docker/compose/releases/download/v2.29.1/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
                         '''
                     sh '''
+                        ls
+                        pwd
                         chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
                         docker compose version
                         '''
