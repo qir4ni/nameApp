@@ -11,8 +11,15 @@ pipeline {
                 script {
                     sh 'apt-get update'
                     sh 'apt-get upgrade -y'
-                    sh 'apt-get install docker-compose-plugin -y'
-                    sh 'docker-compose up -d'
+                    sh '''
+                        DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
+                        mkdir -p $DOCKER_CONFIG/cli-plugins
+                        curl -SL https://github.com/docker/compose/releases/download/v2.29.1/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+                        '''
+                    sh '''
+                        chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+                        docker compose version
+                        '''
                     
                 }
             }
